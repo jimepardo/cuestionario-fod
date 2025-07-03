@@ -62,7 +62,7 @@ function Auth() {
         </div>
         {error && <p className="auth-error">{error}</p>}
         <button type="submit" className="btn-login">Iniciar Sesión</button>
-        <button type="button" onClick={handleRegister} className="btn-register">Registrar (Solo para primer uso)</button>
+        <button type="button" onClick={handleRegister} className="btn-register" disabled>Registrar (Solo para primer uso)</button>
       </form>
       <p className="auth-note">
         **Nota:** Para la primera vez, puedes registrarte con un email y contraseña. Luego, puedes usar esas credenciales para iniciar sesión.
