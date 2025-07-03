@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'; // Importamos useEffect
-import { shuffleArray } from '../utils/helpers'; // Importamos la función de ayuda
+import React, { useState, useEffect } from 'react'; 
+import { shuffleArray } from '../utils/helpers';
+import './styles/Pregunta.css'; 
 
 function Pregunta({ pregunta, respuestasSeleccionadas, alCambiarSeleccion }) {
   const { id, tipoDePregunta, pregunta: textoPregunta, respuestas } = pregunta;
 
   const [respuestasBarajadas, setRespuestasBarajadas] = useState([]);
 
-  // Usamos useEffect para barajar las respuestas cada vez que la 'pregunta' cambie
   useEffect(() => {
-    setRespuestasBarajadas(shuffleArray([...respuestas])); // Barajamos una copia de las respuestas
-  }, [pregunta]); // Dependencia: re-ejecuta cuando 'pregunta' cambia
+    setRespuestasBarajadas(shuffleArray([...respuestas])); 
+  }, [pregunta]); 
 
   return (
     <div className="pregunta-card">
       <h2>{textoPregunta}</h2>
-      {tipoDePregunta === 1 ? ( // Pregunta con varias respuestas correctas (checkboxes)
-        respuestasBarajadas.map((opcion, index) => ( // Usamos respuestasBarajadas
+      {tipoDePregunta === 1 ? ( // (checkboxes)
+        respuestasBarajadas.map((opcion, index) => ( 
           <div key={index} className="opcion">
             <input
               type="checkbox"
@@ -27,8 +27,8 @@ function Pregunta({ pregunta, respuestasSeleccionadas, alCambiarSeleccion }) {
             <label htmlFor={`${id}-opcion-${index}`}>{opcion}</label>
           </div>
         ))
-      ) : ( // Pregunta con una sola respuesta correcta (radio buttons)
-        respuestasBarajadas.map((opcion, index) => ( // Usamos respuestasBarajadas
+      ) : ( 
+        respuestasBarajadas.map((opcion, index) => ( 
           <div key={index} className="opcion">
             <input
               type="radio"

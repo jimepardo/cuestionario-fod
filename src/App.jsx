@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { db, auth } from './firebase-config';
-
-// Importar react-toastify
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // ¡Importante: importar los estilos CSS!
-
+import 'react-toastify/dist/ReactToastify.css'; 
 import Pregunta from './components/Pregunta';
 import Feedback from './components/Feedback';
 import TemaNav from './components/TemaNav';
@@ -14,6 +11,7 @@ import AdminPanel from './components/AdminPanel';
 import Auth from './components/Auth';
 import { shuffleArray } from './utils/helpers';
 import './App.css';
+import ThemeToggleButton from './components/ThemeToggleButton';
 
 function App() {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -110,11 +108,6 @@ function App() {
   };
 
   const handleDeleteQuestion = async (questionId) => {
-    // Usamos toast.warn para la confirmación, sin el window.confirm
-    // O si quieres mantener el window.confirm ANTES, puedes hacerlo.
-    // Para simplificar, si el usuario hace clic, se elimina y se notifica.
-    // Si quieres una confirmación con toastify, es un poco más complejo (ej. con react-confirm-alert)
-    // Por ahora, mantendré el window.confirm por simplicidad.
     if (!window.confirm('¿Estás seguro de que quieres eliminar esta pregunta?')) {
       return;
     }
@@ -220,7 +213,7 @@ function App() {
       <div className="App">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <h1>Cuestionario Interactivo</h1>
-          <button onClick={() => setIsAdminMode(false)} className="btn-admin-toggle">
+          <button onClick={() => setIsAdminMode(false)} className="btn btn-secondary">
             Volver al Cuestionario
           </button>
         </div>
@@ -236,15 +229,15 @@ function App() {
         <h1>Cuestionario Interactivo</h1>
         {user ? (
           <div style={{ display: 'flex', gap: '10px' }}>
-            <button onClick={() => setIsAdminMode(!isAdminMode)} className="btn-admin-toggle">
+            <button onClick={() => setIsAdminMode(!isAdminMode)} className="btn btn-primary">
               {isAdminMode ? 'Volver al Cuestionario' : 'Modo Administrador'}
             </button>
-            <button onClick={handleLogout} className="btn-logout">
+            <button onClick={handleLogout} className="btn btn-danger">
               Cerrar Sesión ({user.email})
             </button>
           </div>
         ) : (
-          <button onClick={() => setIsAdminMode(true)} className="btn-admin-toggle">
+          <button onClick={() => setIsAdminMode(true)} className="btn btn-primary">
             Modo Administrador
           </button>
         )}
@@ -287,7 +280,7 @@ function App() {
                 <button
                   onClick={handleVerificarRespuesta}
                   disabled={respuestasSeleccionadas.length === 0 || esCorrecta !== null}
-                  className="btn-verificar"
+                  className="btn btn-primary"
                 >
                   Verificar Respuesta
                 </button>
@@ -303,14 +296,14 @@ function App() {
                 <button
                   onClick={handlePreguntaAnterior}
                   disabled={preguntaActualIndex === 0}
-                  className="btn-atras"
+                  className="btn btn-primary"
                 >
                   Anterior
                 </button>
                 <button
                   onClick={handleSiguientePregunta}
                   disabled={preguntaActualIndex === preguntasAleatorias.length - 1}
-                  className="btn-siguiente"
+                  className="btn btn-primary"
                 >
                   Siguiente
                 </button>
@@ -320,6 +313,7 @@ function App() {
         </>
       )}
       <ToastContainer /> {/* Componente donde se renderizarán todas las notificaciones */}
+      <ThemeToggleButton />
     </div>
   );
 }

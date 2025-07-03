@@ -1,0 +1,53 @@
+.auth-container {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.auth-container h2 {
+    color: var(--header-bg);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--form-border);
+    border-radius: 3px;
+    background-color: var(--form-input-bg);
+    color: var(--form-input-text);
+    box-sizing: border-box;
+}
+
+.auth-error {
+    color: var(--form-error-color);
+    background-color: var(--form-error-bg);
+    border: 1px solid var(--form-error-border);
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.auth-note {
+  margin-top: 25px;
+  font-size: 0.9em;
+  color: var(--text-color); 
+  line-height: 1.4;
+  border-top: 1px dashed var(--border-color); 
+  padding-top: 15px;
+}

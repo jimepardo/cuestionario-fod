@@ -1,0 +1,49 @@
+.question-form {
+    background-color: var(--form-bg);
+    padding: 15px;
+    border: 1px solid var(--form-border);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.question-form h3 {
+    color: var(--header-bg);
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.question-form .form-group {
+    margin-bottom: 15px;
+}
+
+.question-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.question-form input,
+.question-form textarea,
+.question-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--form-border);
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: var(--form-input-bg);
+    color: var(--form-input-text);
+}
+
+.question-form textarea {
+    resize: vertical;
+}
+
+.form-error-message {
+    color: var(--auth-error-color);
+    background-color: var(--form-error-bg);
+    border: 1px solid var(--form-error-border);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}

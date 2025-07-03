@@ -1,27 +1,219 @@
+:root {
+  /* Colores del Modo Diurno */
+  --background-color: #f0f2f5; /* Fondo general de la app */
+  --text-color: #333; /* Color de texto general */
+  --header-bg: #007bff; /* Color principal de encabezados, logos, etc. */
+  --header-text: white; /* Color de texto en el encabezado */
 
-.pregunta-card {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  --card-bg: #fff; /* Fondo de paneles, tarjetas, formularios, contenedores principales */
+  --border-color: #ddd; /* Color de bordes para elementos, tablas, etc. */
+
+  /* Botones Primarios (acciones principales, activos) */
+  --button-primary-bg: #007bff;
+  --button-primary-text: white;
+  --button-primary-hover-bg: #0056b3;
+
+  /* Botones Secundarios (acciones menos prioritarias, por defecto, inactivos) */
+  --button-secondary-bg: #6c757d;
+  --button-secondary-text: white;
+  --button-secondary-hover-bg: #5a6268;
+
+  /* Botones de Éxito (confirmación, agregar) */
+  --button-success-bg: #28a745;
+  --button-success-hover-bg: #218838;
+
+  /* Botones de Peligro (eliminar, cerrar sesión, error) */
+  --button-danger-bg: #f44336;
+  --button-danger-hover-bg: #d32f2f;
+
+  /* Colores específicos de formularios y tablas */
+  --form-bg: var(--card-bg); /* Generalmente el mismo que el fondo de la tarjeta */
+  --form-border: #ccc;
+  --form-input-bg: white; /* Fondo de los campos de entrada */
+  --form-input-text: var(--text-color); /* Color del texto de los campos de entrada */
+
+  --form-error-bg: #f8d7da;
+  --form-error-border: #f5c6cb;
+  --form-error-color: #dc3545; /* Color del texto de error */
+
+  --table-header-bg: #e9ecef;
+  --table-alt-row-bg: #f8f8f8; /* Fondo fila alterna de tabla */
+
+  /* Otros colores */
+  --link-color: #007bff; /* Color de enlaces o texto cliqueable */
+  --feedback-correct-bg: #d4edda;
+  --feedback-correct-text: #155724;
+  --feedback-incorrect-bg: #f8d7da;
+  --feedback-incorrect-text: #721c24;
+  --clarification-border: #0056b3; /* Borde de aclaración */
+  --clarification-bg: #e9ecef; /* Fondo de aclaración */
 }
 
-.opcion {
-  margin-bottom: 10px;
+/* --- Modo Nocturno --- */
+.dark-mode {
+  --background-color: #1a1a1a; /* Fondo muy oscuro para el body */
+  --text-color: #e0e0e0; /* Texto claro */
+  --header-bg: #0088cc; /* Un azul un poco más vibrante para encabezados en oscuro */
+  --header-text: #f0f0f0; /* Blanco más suave */
+
+  --card-bg: #2c2c2c; /* Fondos de paneles/tarjetas más oscuros */
+  --border-color: #444; /* Bordes más sutiles */
+
+  --button-primary-bg: #006bbd; /* Azul primario para oscuro, un poco más apagado */
+  --button-primary-hover-bg: #00519a;
+
+  --button-secondary-bg: #3a3a3a; /* Gris más oscuro para secundario */
+  --button-secondary-text: #e0e0e0; /* Texto claro para secundario */
+  --button-secondary-hover-bg: #2a2a2a;
+
+  --button-success-bg: #218838; /* Verde para éxito en oscuro */
+  --button-success-hover-bg: #1a6e2e;
+
+  --button-danger-bg: #c82333; /* Rojo para peligro en oscuro */
+  --button-danger-hover-bg: #a61f2c;
+
+  --form-border: #666;
+  --form-input-bg: #3c3c3c; /* Fondo oscuro para los inputs */
+  --form-input-text: #e0e0e0; /* Texto claro en los inputs */
+
+  --form-error-bg: #6a3d3d;
+  --form-error-border: #995555;
+  --form-error-color: #ffcccc;
+
+  --table-header-bg: #3a3a3a;
+  --table-alt-row-bg: #2c2c2c; /* Que se parezca al card-bg */
+
+  --link-color: #8ab4f8; /* Azul claro para enlaces */
+  --feedback-correct-bg: #1e7e34;
+  --feedback-correct-text: #c0ffc0;
+  --feedback-incorrect-bg: #a61f2c;
+  --feedback-incorrect-text: #ffcccc;
+  --clarification-border: #006bbd;
+  --clarification-bg: #2c2c2c; /* Mismo que el card-bg */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color); /* Importante: el color del texto general */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px; /* Añade padding aquí si lo deseas globalmente */
 }
+
+.App {
+  width: 100%;
+  max-width: 1200px;
+  background-color: var(--card-bg); /* Usa la variable */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+}
+
+h1, h2, h3, h4 {
+  color: var(--header-bg); /* Color principal para los títulos */
+  text-align: center; /* Alineación general para títulos */
+}
+
+.btn-primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+.btn-primary:hover {
+  background-color: var(--button-primary-hover-bg);
+}
+
+.btn-secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-secondary-hover-bg);
+}
+
+.btn-success {
+  background-color: var(--button-success-bg);
+  color: var(--button-primary-text);
+}
+
+.btn-success:hover {
+  background-color: var(--button-success-hover-bg);
+}
+
+.btn-danger {
+  background-color: var(--button-danger-bg);
+  color: var(--button-primary-text);
+}
+
+.btn-danger:hover {
+  background-color: var(--button-danger-hover-bg);
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.btn:disabled,
+button:disabled {
+  background-color: var(--button-secondary-bg); /* Un gris más claro para deshabilitado */
+  color: var(--button-secondary-text);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 
 .opcion input[type="checkbox"],
 .opcion input[type="radio"] {
   margin-right: 10px;
-  transform: scale(1.2); /* Aumenta el tamaño de los checkboxes/radios */
+  transform: scale(1.2);
+  accent-color: var(--button-primary-bg);
 }
 
 .opcion label {
   font-size: 1.1em;
   cursor: pointer;
+  color: var(--text-color);
+}
+
+.navegacion-preguntas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .feedback-container {
@@ -64,63 +256,3 @@
   color: #0056b3;
 }
 
-button {
-  padding: 10px 20px;
-  margin: 10px 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-.btn-verificar {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-verificar:hover {
-  background-color: #0056b3;
-}
-
-.btn-aclaracion {
-  background-color: #6c757d;
-  color: white;
-}
-
-.btn-aclaracion:hover {
-  background-color: #5a6268;
-}
-
-.btn-siguiente {
-  background-color: #28a745;
-  color: white;
-}
-
-.btn-siguiente:hover {
-  background-color: #218838;
-}
-
-.btn-atras {
-  background-color: #ffc107;
-  color: #333;
-}
-
-.btn-atras:hover {
-  background-color: #e0a800;
-}
-
-.btn-logout {
-  background-color: #f44336; /* Rojo para cerrar sesión */
-  color: white;
-  padding: 10px 18px;
-  font-size: 1em;
-}
-
-.btn-logout:hover {
-  background-color: #d32f2f;
-}

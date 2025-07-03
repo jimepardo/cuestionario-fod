@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify'; // Importar toast
-import './QuestionForm.css';
+import './styles/QuestionForm.css';
 
 function QuestionForm({ onSave, questionToEdit }) {
   const [pregunta, setPregunta] = useState('');
@@ -40,8 +40,8 @@ function QuestionForm({ onSave, questionToEdit }) {
     e.preventDefault();
     setError('');
 
-    const parsedRespuestas = respuestas.split(',').map(s => s.trim()).filter(s => s);
-    const parsedRespuestasCorrectas = respuestasCorrectas.split(',').map(s => s.trim()).filter(s => s);
+    const parsedRespuestas = respuestas.split(';').map(s => s.trim()).filter(s => s);
+    const parsedRespuestasCorrectas = respuestasCorrectas.split(';').map(s => s.trim()).filter(s => s);
 
     if (parsedRespuestas.length === 0) {
       setError('Debes ingresar al menos una opción de respuesta.');
@@ -140,25 +140,25 @@ function QuestionForm({ onSave, questionToEdit }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="respuestas">Respuestas (separadas por coma):</label>
+        <label htmlFor="respuestas">Respuestas (separadas por ;):</label>
         <textarea
           type="text"
           id="respuestas"
           value={respuestas}
           onChange={(e) => setRespuestas(e.target.value)}
-          placeholder="Opción A, Opción B, Opción C"
+          placeholder="Opción A; Opción B; Opción C"
           required
         />
       </div>
 
       <div className="form-group">
-        <label htmlFor="respuestasCorrectas">Respuestas Correctas (separadas por coma):</label>
+        <label htmlFor="respuestasCorrectas">Respuestas Correctas (separadas por ;):</label>
         <textarea
           type="text"
           id="respuestasCorrectas"
           value={respuestasCorrectas}
           onChange={(e) => setRespuestasCorrectas(e.target.value)}
-          placeholder={tipoDePregunta === 1 ? "Opción A, Opción C" : "Una sola opción"}
+          placeholder={tipoDePregunta === 1 ? "Opción A; Opción C" : "Una sola opción"}
           required
         />
       </div>
@@ -173,11 +173,11 @@ function QuestionForm({ onSave, questionToEdit }) {
         ></textarea>
       </div>
 
-      <button type="submit" className="btn-save">
+      <button type="submit" className="btn btn-success">
         {questionToEdit ? 'Guardar Cambios' : 'Agregar Pregunta'}
       </button>
       {questionToEdit && (
-        <button type="button" onClick={() => onSave(null)} className="btn-cancel">
+        <button type="button" onClick={() => onSave(null)} className="btn btn-secondary">
           Cancelar Edición
         </button>
       )}

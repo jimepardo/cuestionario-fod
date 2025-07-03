@@ -1,5 +1,5 @@
 import React from 'react';
-import './TemaNav.css'; // Crearemos este archivo CSS
+import './styles/TemaNav.css'; // Crearemos este archivo CSS
 
 function TemaNav({ temas, temaSeleccionado, onSeleccionarTema }) {
   return (
@@ -7,7 +7,7 @@ function TemaNav({ temas, temaSeleccionado, onSeleccionarTema }) {
       {temas.map(tema => (
         <button
           key={tema}
-          className={`tema-btn ${tema === temaSeleccionado ? 'active' : ''}`}
+          className={` ${tema === temaSeleccionado ? 'active' : ''}`}
           onClick={() => onSeleccionarTema(tema)}
         >
           {tema}

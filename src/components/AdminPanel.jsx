@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import QuestionForm from './QuestionForm';
-import './AdminPanel.css'; // Asegúrate de que los estilos están importados
+import './styles/AdminPanel.css';
 
 function AdminPanel({ allQuestions, onAddQuestion, onUpdateQuestion, onDeleteQuestion }) {
   const [questionToEdit, setQuestionToEdit] = useState(null); // Estado para la pregunta que se está editando
@@ -39,7 +39,7 @@ function AdminPanel({ allQuestions, onAddQuestion, onUpdateQuestion, onDeleteQue
     <div className="admin-panel">
       <div className="admin-header">
         <h2>Administración de Preguntas</h2>
-        <button onClick={handleAddQuestionClick} className="btn-add-question">
+        <button onClick={handleAddQuestionClick} className="btn btn-success">
           Agregar Nueva Pregunta
         </button>
       </div>
@@ -58,7 +58,7 @@ function AdminPanel({ allQuestions, onAddQuestion, onUpdateQuestion, onDeleteQue
           No hay preguntas cargadas todavía. ¡Agrega una!
         </p>
       ) : (
-        <div className="table-responsive"> {/* Contenedor para scroll horizontal */}
+        <div className="table-responsive"> 
           <table className="questions-table">
             <thead>
               <tr>
@@ -86,8 +86,8 @@ function AdminPanel({ allQuestions, onAddQuestion, onUpdateQuestion, onDeleteQue
                     <td>{q.aclaracion.substring(0, 50)}{q.aclaracion.length > 50 ? '...' : ''}</td>
                     <td>
                       <div className="table-actions">
-                        <button onClick={() => handleEditClick(q)} className="btn-edit">Editar</button>
-                        <button onClick={() => onDeleteQuestion(q.id)} className="btn-delete">Eliminar</button>
+                        <button onClick={() => handleEditClick(q)} className="btn btn-primary">Editar</button>
+                        <button onClick={() => onDeleteQuestion(q.id)} className="btn btn-danger">Eliminar</button>
                       </div>
                     </td>
                   </tr>

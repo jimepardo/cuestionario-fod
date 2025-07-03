@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase-config';
-import { toast } from 'react-toastify'; // Importar toast
-import './Auth.css';
+import { toast } from 'react-toastify'; 
+import './styles/Auth.css';
 
 function Auth() {
   const [email, setEmail] = useState('');
@@ -14,8 +14,7 @@ function Auth() {
     setError('');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      toast.success('Inicio de sesión exitoso!'); // <-- Notificación
-      // Firebase maneja la sesión automáticamente. App.jsx detectará el usuario logueado.
+      toast.success('Inicio de sesión exitoso!'); 
     } catch (err) {
       console.error('Error al iniciar sesión:', err.message);
       setError('Error al iniciar sesión. Verifica tu email y contraseña.');
@@ -61,8 +60,8 @@ function Auth() {
           />
         </div>
         {error && <p className="auth-error">{error}</p>}
-        <button type="submit" className="btn-login">Iniciar Sesión</button>
-        <button type="button" onClick={handleRegister} className="btn-register" disabled>Registrar (Solo para primer uso)</button>
+        <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+        <button type="button" onClick={handleRegister} className="btn btn-secondary" disabled>Registrar (Solo para primer uso)</button>
       </form>
       <p className="auth-note">
         **Nota:** Para la primera vez, puedes registrarte con un email y contraseña. Luego, puedes usar esas credenciales para iniciar sesión.

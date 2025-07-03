@@ -1,0 +1,33 @@
+.theme-toggle-button {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--button-secondary-hover-bg);
+    transform: scale(1.05);
+}
+
+.theme-toggle-button.dark-mode-active {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+}
+
+.theme-toggle-button.dark-mode-active:hover {
+    background-color: var(--button-primary-hover-bg);
+}

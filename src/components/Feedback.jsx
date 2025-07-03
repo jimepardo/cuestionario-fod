@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/Feedback.css'; 
 
 function Feedback({ esCorrecta, aclaracion, respuestasCorrectas }) {
   // No mostrar feedback si aún no se ha verificado
