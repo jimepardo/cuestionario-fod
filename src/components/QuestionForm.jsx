@@ -20,8 +20,8 @@ function QuestionForm({ onSave, questionToEdit }) {
   useEffect(() => {
     if (questionToEdit) {
       setPregunta(questionToEdit.pregunta);
-      setRespuestas(questionToEdit.respuestas.join(', '));
-      setRespuestasCorrectas(questionToEdit.respuestasCorrectas.join(', '));
+      setRespuestas(questionToEdit.respuestas.join('; '));
+      setRespuestasCorrectas(questionToEdit.respuestasCorrectas.join('; '));
       setAclaracion(questionToEdit.aclaracion);
       setTipoDePregunta(questionToEdit.tipoDePregunta);
       setTema(questionToEdit.tema);
